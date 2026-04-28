@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Instalaciones() {
   return (
-    <section id="instalaciones" className="py-24 lg:py-32 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
+    <section id="instalaciones" className="py-24 lg:py-32 bg-linear-to-b from-white to-gray-50/50 overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
         
         {/* Encabezado de sección (antes estaba abajo) */}

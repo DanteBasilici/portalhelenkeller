@@ -138,10 +138,10 @@ export default function Recursos() {
     <>
       <section id="recursos" className="relative py-24 lg:py-32 bg-gray-200 overflow-hidden">
         {/* Fondo sutil */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#009ADE]/3 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#E32726]/3 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-150 h-150 bg-[#009ADE]/3 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-125 h-125 bg-[#E32726]/3 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
         
-        <div className="relative px-6 lg:px-10 max-w-screen-xl mx-auto z-10">
+        <div className="relative px-6 lg:px-10 max-w-7xl mx-auto z-10">
           
           {/* Header mejorado */}
           <div className="mb-16 lg:mb-20">
@@ -155,7 +155,7 @@ export default function Recursos() {
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] tracking-tight leading-[1.05] mb-4">
                   Nuestros{" "}
                   <span className="relative">
-                    <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#009ADE] to-cyan-400">
+                    <span className="relative z-10 bg-clip-text text-transparent bg-linear-to-r from-[#009ADE] to-cyan-400">
                       Recursos
                     </span>
                     <div className="absolute -bottom-1 left-0 w-full h-2 bg-[#FFD600]/20 rounded-full blur-sm"></div>
@@ -190,7 +190,7 @@ export default function Recursos() {
               return (
                 <div 
                   key={idx} 
-                  className={`group relative bg-white rounded-[2rem] p-6 sm:p-7 transition-all duration-500 border flex flex-col h-full
+                  className={`group relative bg-white rounded-4xl p-6 sm:p-7 transition-all duration-500 border flex flex-col h-full
                     ${isActive 
                       ? `border-gray-100 hover:border-transparent hover:-translate-y-3 hover:shadow-2xl ${app.borderGlow} cursor-pointer` 
                       : 'border-gray-100 opacity-60 hover:opacity-80 cursor-not-allowed'
