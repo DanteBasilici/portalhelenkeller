@@ -17,7 +17,7 @@ const arcadeGames =[
   { title: "Hyper Pong", desc: "El tenis clásico reinventado a hipervelocidad. Desafía a la IA o compite contra un amigo.", link: "https://hyperponghk.netlify.app", icon: Disc, color: "text-green-400", bg: "bg-green-400/10" },
   { title: "Snake", desc: "El legendario juego de la serpiente. Aliméntala para que crezca, ¡pero ten cuidado de no chocar!", link: "https://snakehk.netlify.app", icon: Activity, color: "text-yellow-400", bg: "bg-yellow-400/10" },
   { title: "Tetris", desc: "Piensa rápido y encaja las piezas a la perfección en este adictivo rompecabezas de bloques.", link: "https://tetrishk.netlify.app", icon: Grid, color: "text-cyan-400", bg: "bg-cyan-400/10" },
-  { title: "Pac-Man", desc: "Come todas las pastillas y escapa de los fantasmas en el laberinto más famoso de la historia.", link: "https://pacmanhk.netlify.app", icon: Smile, color: "text-yellow-500", bg: "bg-yellow-500/10" },
+  { title: "Pac-Man", desc: "Come todas las pastillas y escapa de los fantasmas en el laberinto más famoso de la historia.", link: "https://packmanhk.netlify.app", icon: Smile, color: "text-yellow-500", bg: "bg-yellow-500/10" },
   { title: "Shooter HK", desc: "Acción cenital pura al estilo Brawl Stars. ¡Muévete por el mapa, esquiva y no dejes de disparar!", link: "https://shooterhk.netlify.app", icon: Crosshair, color: "text-orange-400", bg: "bg-orange-400/10" },
   { title: "Neon Strike", desc: "Surca los cielos en esta experiencia de disparos cyberpunk. Esquiva proyectiles y domina el espacio aéreo.", link: "https://disparoshk.netlify.app", icon: Plane, color: "text-emerald-400", bg: "bg-emerald-400/10" },
   { title: "Geo Swarm", desc: "Sobrevive a oleadas infinitas de figuras geométricas en este frenético juego de disparos con vista cenital.", link: "https://swarmhk.netlify.app", icon: Hexagon, color: "text-indigo-400", bg: "bg-indigo-400/10" },
@@ -25,6 +25,8 @@ const arcadeGames =[
   { title: "Defensa Lunar", desc: "Protege tu base espacial de una peligrosa lluvia de meteoritos. ¡Apunta rápido y salva la estación!", link: "https://meteoritohk.netlify.app", icon: Shield, color: "text-amber-500", bg: "bg-amber-500/10" },
   { title: "Misión Apolo", desc: "Demuestra tu precisión como piloto y logra aterrizar el módulo lunar en la plataforma sin que explote.", link: "https://lunarhk.netlify.app", icon: Navigation, color: "text-teal-300", bg: "bg-teal-300/10" },
   { title: "Astro Blaster", desc: "Combate intergaláctico clásico. Elimina escuadrones de naves enemigas en este espectacular arcade de vuelo.", link: "https://astroblasterhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
+  { title: "Goal", desc: "Haz un gol y defiende tu arco.", link: "https://futbolhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
+  { title: "CrazyCars", desc: "Esquiva autos y no choques.", link: "https://autosdanhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
 ];
 
 const apps =[
