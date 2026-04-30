@@ -21,12 +21,12 @@ const arcadeGames =[
   { title: "Shooter HK", desc: "Acción cenital pura al estilo Brawl Stars. ¡Muévete por el mapa, esquiva y no dejes de disparar!", link: "https://shooterhk.netlify.app", icon: Crosshair, color: "text-orange-400", bg: "bg-orange-400/10" },
   { title: "Neon Strike", desc: "Surca los cielos en esta experiencia de disparos cyberpunk. Esquiva proyectiles y domina el espacio aéreo.", link: "https://disparoshk.netlify.app", icon: Plane, color: "text-emerald-400", bg: "bg-emerald-400/10" },
   { title: "Geo Swarm", desc: "Sobrevive a oleadas infinitas de figuras geométricas en este frenético juego de disparos con vista cenital.", link: "https://swarmhk.netlify.app", icon: Hexagon, color: "text-indigo-400", bg: "bg-indigo-400/10" },
-  { title: "Monster Track", desc: "Acelera al máximo y supera los terrenos más extremos y obstáculos a bordo de una camioneta monstruo.", link: "https://monsterhk.netlify.app", icon: Car, color: "text-rose-500", bg: "bg-rose-500/10" },
+  { title: "Monster Track", desc: "Acelera al máximo y supera los terrenos más extremos y obstáculos a bordo de una camioneta monstruo.", link: "https://monstertruckhk.netlify.app", icon: Car, color: "text-rose-500", bg: "bg-rose-500/10" },
   { title: "Defensa Lunar", desc: "Protege tu base espacial de una peligrosa lluvia de meteoritos. ¡Apunta rápido y salva la estación!", link: "https://meteoritohk.netlify.app", icon: Shield, color: "text-amber-500", bg: "bg-amber-500/10" },
   { title: "Misión Apolo", desc: "Demuestra tu precisión como piloto y logra aterrizar el módulo lunar en la plataforma sin que explote.", link: "https://lunarhk.netlify.app", icon: Navigation, color: "text-teal-300", bg: "bg-teal-300/10" },
   { title: "Astro Blaster", desc: "Combate intergaláctico clásico. Elimina escuadrones de naves enemigas en este espectacular arcade de vuelo.", link: "https://astroblasterhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
-  { title: "Goal", desc: "Haz un gol y defiende tu arco.", link: "https://futbolhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
-  { title: "CrazyCars", desc: "Esquiva autos y no choques.", link: "https://autosdanhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
+  { title: "Neon Fútbol", desc: "Haz un gol y defiende tu arco.", link: "https://futbolhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
+  { title: "Desert Racing", desc: "Esquiva autos y no choques.", link: "https://autosdanhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
 ];
 
 const apps =[
