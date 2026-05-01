@@ -27,6 +27,7 @@ const arcadeGames =[
   { title: "Astro Blaster", desc: "Combate intergaláctico clásico. Elimina escuadrones de naves enemigas en este espectacular arcade de vuelo.", link: "https://astroblasterhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
   { title: "Neon Fútbol", desc: "Haz un gol y defiende tu arco.", link: "https://futbolhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
   { title: "Desert Racing", desc: "Esquiva autos y no choques.", link: "https://autosdanhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
+  { title: "Star Wars", desc: "Usa al Halcón Milenario para eliminar a los enemigos de La República.", link: "https://gerradelasgalaxiashk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
 ];
 
 const apps =[
