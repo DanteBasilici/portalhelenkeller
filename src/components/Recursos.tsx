@@ -6,7 +6,8 @@ import {
   X, Gamepad2, Play, Circle, Layout, Rocket, Disc, 
   Activity, Grid, Smile, Crosshair, Plane, Hexagon, 
   Car, Shield, Navigation, Zap, Sparkles, ExternalLink, 
-  Clock, Wrench, Layers, Map, Eye, Book, FileText
+  Clock, Wrench, Layers, Map, Eye, Book, FileText,
+  Trophy, Flag, Star // <-- Nuevos íconos agregados
 } from "lucide-react";
 
 // ─── COLECCIÓN DE JUEGOS PARA EL MODAL ───
@@ -25,9 +26,11 @@ const arcadeGames =[
   { title: "Defensa Lunar", desc: "Protege tu base espacial de una peligrosa lluvia de meteoritos. ¡Apunta rápido y salva la estación!", link: "https://meteoritohk.netlify.app", icon: Shield, color: "text-amber-500", bg: "bg-amber-500/10" },
   { title: "Misión Apolo", desc: "Demuestra tu precisión como piloto y logra aterrizar el módulo lunar en la plataforma sin que explote.", link: "https://lunarhk.netlify.app", icon: Navigation, color: "text-teal-300", bg: "bg-teal-300/10" },
   { title: "Astro Blaster", desc: "Combate intergaláctico clásico. Elimina escuadrones de naves enemigas en este espectacular arcade de vuelo.", link: "https://astroblasterhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
-  { title: "Neon Fútbol", desc: "Haz un gol y defiende tu arco.", link: "https://futbolhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
-  { title: "Desert Racing", desc: "Esquiva autos y no choques.", link: "https://autosdanhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
-  { title: "Star Wars", desc: "Usa al Halcón Milenario para eliminar a los enemigos de La República.", link: "https://gerradelasgalaxiashk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
+  
+  // <-- Estos son los 3 arreglados con íconos y colores distintos
+  { title: "Neon Fútbol", desc: "Deslízate por una vibrante cancha de neón. Demuestra tus reflejos, defiende tu portería y marca el gol de la victoria.", link: "https://futbolhk.netlify.app", icon: Trophy, color: "text-green-300", bg: "bg-green-300/10" },
+  { title: "Desert Racing", desc: "Pisa el acelerador a fondo bajo el sol del desierto. Esquiva el tráfico a toda velocidad y demuestra quién es el rey de las dunas.", link: "https://autosdanhk.netlify.app", icon: Flag, color: "text-orange-500", bg: "bg-orange-500/10" },
+  { title: "Star Wars", desc: "Toma los controles del legendario Halcón Milenario. Esquiva el fuego enemigo y defiende la galaxia en esta épica batalla espacial.", link: "https://gerradelasgalaxiashk.netlify.app", icon: Star, color: "text-yellow-400", bg: "bg-yellow-400/10" },
 ];
 
 const apps =[
@@ -121,12 +124,8 @@ const apps =[
   },
 ];
 
-
-
-
-
 export default function Recursos() {
-  const[isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -190,16 +189,16 @@ export default function Recursos() {
               const isActive = app.status === 'active' || app.status === 'modal';
               const isDev = app.status === 'dev' || app.status === 'soon';
               
-              return (
-                <div 
-                  key={idx} 
-                  className={`group relative bg-white rounded-4xl p-6 sm:p-7 transition-all duration-500 border flex flex-col h-full
-                    ${isActive 
-                      ? `border-gray-100 hover:border-transparent hover:-translate-y-3 hover:shadow-2xl ${app.borderGlow} cursor-pointer` 
-                      : 'border-gray-100 opacity-60 hover:opacity-80 cursor-not-allowed'
-                    }
-                  `}
-                >
+              // Clases comunes para el diseño del contenedor (ahora usado como Link o Button)
+              const cardClasses = `group relative w-full text-left bg-white rounded-4xl p-6 sm:p-7 transition-all duration-500 border flex flex-col h-full
+                ${isActive 
+                  ? `border-gray-100 hover:border-transparent hover:-translate-y-3 hover:shadow-2xl ${app.borderGlow} cursor-pointer` 
+                  : 'border-gray-100 opacity-60 hover:opacity-80 cursor-not-allowed'
+                }`;
+
+              // Contenido interior de la tarjeta (para no repetir código)
+              const cardContent = (
+                <>
                   {/* Glow de fondo en hover */}
                   {isActive && (
                     <div className={`absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 ${app.bgGlow} blur-xl`}></div>
@@ -242,34 +241,50 @@ export default function Recursos() {
                     {app.desc}
                   </p>
                   
-                  {/* CTA Footer */}
+                  {/* CTA Footer (cambiado a divs internamente ya que el contenedor padre ahora hace el clic) */}
                   {app.status === 'modal' ? (
-                    <button 
-                      onClick={() => setIsModalOpen(true)}
-                      className="mt-auto flex items-center justify-between w-full pt-4 border-t border-gray-100 text-sm font-bold text-[#1a1a1a] group-hover:text-indigo-600 transition-colors"
-                    >
+                    <div className="mt-auto flex items-center justify-between w-full pt-4 border-t border-gray-100 text-sm font-bold text-[#1a1a1a] group-hover:text-indigo-600 transition-colors">
                       <span>Explorar colección</span>
                       <span className="bg-gray-50 p-2.5 rounded-full group-hover:bg-indigo-100 group-hover:scale-110 transition-all">
                         <Gamepad2 className="w-4 h-4" />
                       </span>
-                    </button>
+                    </div>
                   ) : app.status === 'active' ? (
-                    <Link 
-                      href={app.link} 
-                      target="_blank" 
-                      className="mt-auto flex items-center justify-between w-full pt-4 border-t border-gray-100 text-sm font-bold text-[#1a1a1a] group-hover:text-[#009ADE] transition-colors"
-                    >
+                    <div className="mt-auto flex items-center justify-between w-full pt-4 border-t border-gray-100 text-sm font-bold text-[#1a1a1a] group-hover:text-[#009ADE] transition-colors">
                       <span>Ingresar a la app</span>
                       <span className="bg-gray-50 p-2.5 rounded-full group-hover:bg-[#009ADE]/10 group-hover:translate-x-1 transition-all">
                         <ExternalLink className="w-4 h-4" />
                       </span>
-                    </Link>
+                    </div>
                   ) : (
                     <div className="mt-auto pt-4 border-t border-gray-100 text-sm font-bold text-gray-400 flex items-center gap-2">
                       <Clock className="w-4 h-4" />
                       <span>Próximamente</span>
                     </div>
                   )}
+                </>
+              );
+
+              // Renderizado Condicional del Wrapper
+              if (app.status === 'modal') {
+                return (
+                  <button key={idx} onClick={() => setIsModalOpen(true)} className={cardClasses}>
+                    {cardContent}
+                  </button>
+                );
+              }
+
+              if (app.status === 'active') {
+                return (
+                  <Link key={idx} href={app.link} target="_blank" className={cardClasses}>
+                    {cardContent}
+                  </Link>
+                );
+              }
+
+              return (
+                <div key={idx} className={cardClasses}>
+                  {cardContent}
                 </div>
               );
             })}
@@ -285,7 +300,6 @@ export default function Recursos() {
       </section>
 
       {/* ─── MODAL 3D ESPECTACULAR (ARCADE) ─── */}
-      {/* ... (dejá el modal exactamente igual, está PERFECTO) ... */}
       <div 
         className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 transition-all duration-700 ${isModalOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none delay-300'}`}
       >

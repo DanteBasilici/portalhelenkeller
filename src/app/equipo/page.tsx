@@ -15,8 +15,9 @@ const categoriasEquipo = [
     borderColor: "group-hover:border-red-500/30",
     bgPlaceholder: "from-red-500/20 to-red-700/40",
     miembros:[
-      { nombre: "Nombre Apellido", cargo: "Director/a", foto: "" },
-      { nombre: "Nombre Apellido", cargo: "Vicedirector/a", foto: "" },
+      { nombre: "Natalia", cargo: "Directora", foto: "/natalia.jpeg" },
+      { nombre: "Claudia", cargo: "Vicedirectora", foto: "" },
+      { nombre: "Cecilia", cargo: "Secretaria", foto: "/cecilia.jpeg" },
     ]
   },
   {
@@ -29,9 +30,10 @@ const categoriasEquipo = [
     borderColor: "group-hover:border-blue-500/30",
     bgPlaceholder: "from-blue-500/20 to-blue-700/40",
     miembros:[
-      { nombre: "Nombre Apellido", cargo: "Psicólogo/a", foto: "" },
-      { nombre: "Nombre Apellido", cargo: "Trabajador/a Social", foto: "" },
-      { nombre: "Nombre Apellido", cargo: "Fonoaudiólogo/a", foto: "" },
+      { nombre: "Luisa", cargo: "Docente", foto: "" },
+      { nombre: "Noelia", cargo: "Trabajadora Social", foto: "" },
+      { nombre: "Aldana", cargo: "Fonoaudiólogoa", foto: "" },
+      { nombre: "Daniela", cargo: "Psicóloga", foto: "" },
     ]
   },
   {
@@ -43,7 +45,23 @@ const categoriasEquipo = [
     cargoColor: "text-yellow-400",
     borderColor: "group-hover:border-yellow-500/30",
     bgPlaceholder: "from-yellow-400/20 to-yellow-600/40",
-    miembros: Array(4).fill({ nombre: "Nombre Docente", cargo: "Docente de Grado", foto: "" }) 
+    miembros:[
+      { nombre: "Adriana F.", cargo: "Docente", foto: "/adrianaf.jpeg" },
+      { nombre: "Adriana V.", cargo: "Educación Física", foto: "/adrianav.jpeg" },
+      { nombre: "Aldana", cargo: "Docente", foto: "/aldana.jpeg" },
+      { nombre: "Analía", cargo: "Plástica", foto: "/analia.jpeg" },
+      { nombre: "Claudia", cargo: "Docente", foto: "/Claudia.jpeg" },
+      { nombre: "Silvia", cargo: "Docente", foto: "" },
+      { nombre: "Daniela", cargo: "Docente", foto: "/danielp.jpeg" },
+      { nombre: "Flavia", cargo: "Docente", foto: "/flavia.jpeg" },
+      { nombre: "Jimena", cargo: "Docente", foto: "/jimena.jpeg" },
+      { nombre: "Yamila", cargo: "Psicomotricidad", foto: "/yamila.jpeg" },
+      { nombre: "Mariana", cargo: "Terapista Ocupacional", foto: "" },
+      { nombre: "Fernando", cargo: "Música", foto: "" },
+      { nombre: "Cecilia", cargo: "Docente", foto: "" },
+      { nombre: "Micaela", cargo: "Docente", foto: "" },
+      { nombre: "Emilce", cargo: "Docente", foto: "" },
+    ] 
   },
   {
     titulo: "Apoyo a la Inclusión",
@@ -54,7 +72,22 @@ const categoriasEquipo = [
     cargoColor: "text-cyan-400",
     borderColor: "group-hover:border-cyan-500/30",
     bgPlaceholder: "from-cyan-500/20 to-cyan-700/40",
-    miembros: Array(4).fill({ nombre: "Nombre Docente", cargo: "Docente de Apoyo", foto: "" })
+    miembros:[
+      { nombre: "Daniela", cargo: "Docente", foto: "/danielab.jpeg" },
+      { nombre: "Laura", cargo: "Tiflotecnología", foto: "/laura.jpeg" },
+      { nombre: "Sonia", cargo: "Docente", foto: "/sonia.jpeg" },
+      { nombre: "Silvana", cargo: "Docente", foto: "" },
+      { nombre: "Paola", cargo: "Docente", foto: "" },
+      { nombre: "Mariana Z.", cargo: "Docente", foto: "" },
+      { nombre: "Mariana G.", cargo: "Docente", foto: "" },
+      { nombre: "Carolina S.", cargo: "Docente", foto: "" },
+      { nombre: "Carolina L.", cargo: "Docente", foto: "" },
+      { nombre: "Soledad", cargo: "Docente", foto: "" },
+      { nombre: "Viviana", cargo: "Docente", foto: "" },
+      { nombre: "Valeria", cargo: "Docente", foto: "" },
+      { nombre: "Luciana", cargo: "Docente", foto: "" },
+      { nombre: "Emmanuel", cargo: "Docente", foto: "" },
+    ]
   },
   {
     titulo: "Personal No Docente",
@@ -65,7 +98,16 @@ const categoriasEquipo = [
     cargoColor: "text-red-400",
     borderColor: "group-hover:border-red-500/30",
     bgPlaceholder: "from-red-500/20 to-red-700/40",
-    miembros: Array(4).fill({ nombre: "Nombre Apellido", cargo: "Celador/a", foto: "" })
+    miembros:[
+      { nombre: "Mariela", cargo: "Celador", foto: "" },
+      { nombre: "Silvana", cargo: "Celador", foto: "" },
+      { nombre: "Bárbara", cargo: "Celador", foto: "" },
+      { nombre: "María", cargo: "Celador", foto: "" },
+      { nombre: "Diego", cargo: "Celador", foto: "/diego.jpeg" },
+      { nombre: "Franco", cargo: "Celador", foto: "/franco.jpeg" },
+      { nombre: "Santos", cargo: "Celador", foto: "" },
+      { nombre: "Mario", cargo: "Celador", foto: "" },
+    ]
   },
   {
     titulo: "Administración y Sistemas",
@@ -91,14 +133,14 @@ export default function EquipoPage() {
         <Navbar />
         
         {/* Efectos de luz con los 3 colores institucionales */}
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#009ADE] opacity-[0.07] blur-[180px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#E32726] opacity-[0.05] blur-[150px] rounded-full pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-[#FFD600] opacity-[0.04] blur-[130px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-175 h-175 bg-[#009ADE] opacity-[0.07] blur-[180px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-150 h-150 bg-[#E32726] opacity-[0.05] blur-[150px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/4 w-100 h-100 bg-[#FFD600] opacity-[0.04] blur-[130px] rounded-full pointer-events-none"></div>
         
         {/* Líneas decorativas */}
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#009ADE]/30 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-[#009ADE]/30 to-transparent"></div>
 
-        <div className="max-w-screen-xl mx-auto text-center relative z-10">
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 text-sm font-bold tracking-wider uppercase mb-8 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-[#FFD600]" />
@@ -108,7 +150,7 @@ export default function EquipoPage() {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 tracking-tighter leading-[0.95]">
             Nuestro{" "}
             <span className="relative">
-              <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#009ADE] via-cyan-300 to-[#009ADE]">
+              <span className="relative z-10 bg-clip-text text-transparent bg-linear-to-r from-[#009ADE] via-cyan-300 to-[#009ADE]">
                 Equipo
               </span>
               <div className="absolute -bottom-2 left-0 w-full h-3 bg-[#FFD600]/20 rounded-full blur-sm"></div>
@@ -134,7 +176,7 @@ export default function EquipoPage() {
       </section>
 
       {/* SECCIÓN DE TARJETAS */}
-      <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24">
         
         {categoriasEquipo.map((categoria, index) => {
           const Icon = categoria.icono;
@@ -144,7 +186,7 @@ export default function EquipoPage() {
             <section key={index} className={`mb-32 last:mb-0 ${esPar ? '' : 'lg:pl-8'}`}>
               {/* Título de la Categoría - Rediseñado */}
               <div className={`flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-12 ${esPar ? '' : 'sm:flex-row-reverse'}`}>
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${categoria.bgIcon} shadow-lg flex-shrink-0`}>
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${categoria.bgIcon} shadow-lg shrink-0`}>
                   <Icon className={`w-8 h-8 ${categoria.iconColor}`} />
                 </div>
                 <div className={esPar ? '' : 'sm:text-right'}>
@@ -155,7 +197,7 @@ export default function EquipoPage() {
                     {categoria.subtitulo}
                   </p>
                 </div>
-                <div className={`hidden sm:block flex-1 h-px bg-gradient-to-r ${esPar ? 'from-gray-200 to-transparent' : 'from-transparent to-gray-200'}`}></div>
+                <div className={`hidden sm:block flex-1 h-px bg-linear-to-r ${esPar ? 'from-gray-200 to-transparent' : 'from-transparent to-gray-200'}`}></div>
               </div>
 
               {/* Grid de Tarjetas - Más cinematográfico */}
@@ -163,7 +205,7 @@ export default function EquipoPage() {
                 {categoria.miembros.map((miembro, idx) => (
                   <div 
                     key={idx} 
-                    className={`group relative rounded-[2rem] overflow-hidden aspect-[4/5] shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer bg-[#0a0a0a] ${categoria.borderColor} border-2 border-transparent`}
+                    className={`group relative rounded-4xl overflow-hidden aspect-4/5 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer bg-[#0a0a0a] ${categoria.borderColor} border-2 border-transparent`}
                   >
                     {/* Imagen de fondo (O placeholder) */}
                     {miembro.foto ? (
@@ -176,15 +218,15 @@ export default function EquipoPage() {
                           sizes="(max-width: 768px) 50vw, 25vw"
                         />
                         {/* Overlay sutil para foto real */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
                       </>
                     ) : (
                       <>
                         {/* Fondo gradient para placeholder */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${categoria.bgPlaceholder}`}>
+                        <div className={`absolute inset-0 bg-linear-to-br ${categoria.bgPlaceholder}`}>
                           {/* Patrón decorativo */}
                           <div className="absolute inset-0 opacity-10">
-                            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_white_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+                            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,white_1px,transparent_1px)] bg-size-[20px_20px]"></div>
                           </div>
                         </div>
                         
@@ -196,7 +238,7 @@ export default function EquipoPage() {
                         </div>
                         
                         {/* Overlay más oscuro para placeholder */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/50 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
                       </>
                     )}
 
@@ -217,7 +259,7 @@ export default function EquipoPage() {
                     
                     {/* Efecto de brillo al hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-white/10"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-transparent via-white/5 to-white/10"></div>
                     </div>
                     
                     {/* Esquina decorativa */}
@@ -237,8 +279,8 @@ export default function EquipoPage() {
       </div>
 
       {/* CTA Final */}
-      <div className="max-w-screen-xl mx-auto px-6 lg:px-10 pb-24">
-        <div className="bg-gradient-to-r from-[#009ADE]/5 via-[#E32726]/5 to-[#FFD600]/5 rounded-[3rem] p-12 text-center border border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 pb-24">
+        <div className="bg-linear-to-r from-[#009ADE]/5 via-[#E32726]/5 to-[#FFD600]/5 rounded-[3rem] p-12 text-center border border-gray-100">
           <HeartHandshake className="w-12 h-12 text-[#009ADE] mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-black text-[#1a1a1a] mb-4">
             ¿Querés ser parte de nuestro equipo?

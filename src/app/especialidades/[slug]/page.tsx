@@ -30,7 +30,7 @@ const datosEspecialidades: Record<string, EspecialidadData> = {
     subtitulo: "Los primeros pasos son los más importantes.",
     descripcion: "Nuestro servicio de Atención Temprana recibe a bebés y niños pequeños, brindando contención familiar y estrategias de estimulación sensorial, motriz y cognitiva. Buscamos potenciar al máximo su desarrollo en la etapa de mayor plasticidad cerebral.",
     color: "from-[#009ADE] to-cyan-400",
-    imagen: "https://images.pexels.com/photos/3662804/pexels-photo-3662804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imagen: "/temprana.jpg",
     gradientBg: "from-[#009ADE]/5 via-transparent to-[#009ADE]/5",
     borderColor: "border-[#009ADE]/20",
     textColor: "text-[#009ADE]",
@@ -45,7 +45,7 @@ const datosEspecialidades: Record<string, EspecialidadData> = {
     subtitulo: "Aprender jugando y explorando el mundo.",
     descripcion: "El Nivel Inicial es un espacio mágico donde los niños interactúan, socializan y descubren su entorno de manera adaptada. Fomentamos la independencia, la orientación espacial y la iniciación al sistema Braille a través de metodologías lúdicas.",
     color: "from-[#E32726] to-red-400",
-    imagen: "https://images.pexels.com/photos/8612920/pexels-photo-8612920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imagen: "/inicial.jpg",
     gradientBg: "from-[#E32726]/5 via-transparent to-[#E32726]/5",
     borderColor: "border-[#E32726]/20",
     textColor: "text-[#E32726]",
@@ -58,21 +58,26 @@ const datosEspecialidades: Record<string, EspecialidadData> = {
   "nivel-primario": {
     titulo: "Nivel Primario (Sede)",
     subtitulo: "Educación integral, innovación y desarrollo de autonomía.",
-    descripcion: "Nuestra sede central ofrece una trayectoria escolar completa y personalizada. Aquí, los estudiantes no solo cubren la currícula oficial adaptada, sino que acceden a herramientas específicas de vanguardia para garantizar su alfabetización plena y su desarrollo cognitivo.",
+    descripcion: `En el Nivel Primario en sede transitan su escolaridad, estudiantes con discapacidad visual y multidiscapacidad. La propuesta educativa acompaña sus trayectorias, respetando sus ritmos, estilos de aprendizaje, y formas de comunicación.
+                  Se trabaja desde una planificación centrada en la persona, donde cada estudiante es protagonista de su proceso, considerando sus intereses, necesidades y potencialidades.
+                  El abordaje pedagógico incluye el uso de sistemas y recursos específicos como Braille, macrotipo, comunicación aumentativa y alternativa, materiales táctiles y tecnologías de apoyo, en función de cada perfil.
+                  Asimismo, se prioriza el desarrollo de habilidades funcionales, sociales y comunicativas, promoviendo la mayor autonomía posible y la participación en la vida cotidiana.
+                  El trabajo se realiza de manera interdisciplinaria, en articulación con las familias y otros profesionales, generando un entorno estimulante, estructurado, accesible y acorde a las características de los estudiantes.
+`,
     color: "from-[#FFD600] to-yellow-500",
-    imagen: "https://images.pexels.com/photos/7092356/pexels-photo-7092356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imagen: "/sede.jpg",
     gradientBg: "from-[#FFD600]/5 via-transparent to-[#FFD600]/5",
     borderColor: "border-[#FFD600]/20",
     textColor: "text-[#FFD600]",
     badgeBg: "bg-[#FFD600]/10",
     destacados:[
-      { icon: Book, titulo: "Alfabetización Avanzada", desc: "Fuerte trabajo en lectoescritura Braille y tinta. Utilizamos nuestra app digital propia para practicar sílabas, letras y formación de palabras de manera interactiva.", link: "https://alfabetizacion.vercel.app/" },
-      { icon: Eye, titulo: "Estimulación Visual", desc: "Gabinete especializado con ejercicios y juegos terapéuticos apoyados en software desarrollado por nuestro equipo, maximizando el remanente visual de los alumnos.", link: "https://estimulacionvisual.vercel.app/" }
+      { icon: Book, titulo: "Alfabetización Avanzada", desc: "Fuerte trabajo en lectura y escritura Braille y tinta, mediante diversos recursos y materiales concretos, representativos y gráficos. Además utilizamos nuestra app digital propia para favorecer la conciencia fonológica, la correspondencia fonema-grafema y la estructuración léxica y gramatical de manera interactiva.", link: "https://alfabetizacion.vercel.app/" },
+      { icon: Eye, titulo: "Estimulación Visual", desc: "Abordaje de estimulación visual a cargo del equipo docente, mediante diversos recursos visuales, entre ellos software propio, orientado a favorecer el funcionamiento visual de los estudiantes.", link: "https://estimulacionvisual.vercel.app/" }
     ],
     materias:[
       { icon: Dumbbell, nombre: "Educación Física y Deportes" },
       { icon: Music, nombre: "Música y Expresión Sonora" },
-      { icon: Palette, nombre: "Plástica y Arte Adaptado" },
+      { icon: Palette, nombre: "Plástica y Arte" },
     ]
   },
   "apoyo-inclusion": {
@@ -80,7 +85,7 @@ const datosEspecialidades: Record<string, EspecialidadData> = {
     subtitulo: "Puentes hacia la igualdad de oportunidades.",
     descripcion: "Nuestro equipo de inclusión acompaña a estudiantes con ceguera o baja visión que asisten a escuelas comunes. Asesoramos a los docentes de dichas instituciones, adaptamos el material de estudio y garantizamos que el estudiante tenga una trayectoria exitosa y sin barreras.",
     color: "from-[#009ADE] to-cyan-400",
-    imagen: "https://images.pexels.com/photos/5905497/pexels-photo-5905497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imagen: "/inclusion.jpg",
     gradientBg: "from-[#009ADE]/5 via-transparent to-[#009ADE]/5",
     borderColor: "border-[#009ADE]/20",
     textColor: "text-[#009ADE]",
@@ -95,7 +100,7 @@ const datosEspecialidades: Record<string, EspecialidadData> = {
     subtitulo: "La tecnología como motor de independencia.",
     descripcion: "La tiflotecnología es el conjunto de técnicas, conocimientos y recursos adaptados. Enseñamos a nuestros alumnos a utilizar computadoras y dispositivos móviles mediante lectores de pantalla (como NVDA y Jaws), magnificadores y atajos de teclado, preparándolos para el mundo digital.",
     color: "from-[#E32726] to-red-400",
-    imagen: "https://images.pexels.com/photos/7249185/pexels-photo-7249185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imagen: "/tiflo.jpg",
     gradientBg: "from-[#E32726]/5 via-transparent to-[#E32726]/5",
     borderColor: "border-[#E32726]/20",
     textColor: "text-[#E32726]",
@@ -182,7 +187,7 @@ export default async function EspecialidadPage(props: { params: Promise<{ slug: 
                 <span>Sobre esta área</span>
               </div>
               
-              <p className="text-xl text-gray-700 leading-relaxed font-medium mb-12">
+              <p className="text-xl text-gray-700 leading-relaxed whitespace-pre-line font-medium mb-12">
                 {data.descripcion}
               </p>
 
