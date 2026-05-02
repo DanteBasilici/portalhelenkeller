@@ -74,7 +74,7 @@ const categoriasEquipo = [
     bgPlaceholder: "from-cyan-500/20 to-cyan-700/40",
     miembros:[
       { nombre: "Daniela", cargo: "Docente", foto: "/danielab.jpeg" },
-      { nombre: "Laura", cargo: "Tiflotecnología", foto: "/laura.jpeg" },
+      { nombre: "Laura", cargo: "Docente", foto: "/laura.jpeg" },
       { nombre: "Sonia", cargo: "Docente", foto: "/sonia.jpeg" },
       { nombre: "Silvana", cargo: "Docente", foto: "" },
       { nombre: "Paola", cargo: "Docente", foto: "" },

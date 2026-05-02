@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import Recursos from "@/components/Recursos";
 import Especialidades from "@/components/Especialidades";
 import Contacto from "@/components/Contacto";
-import Historia from "@/components/Historia"; // ← Importamos el nuevo componente
+import Instalaciones from "@/components/Instalaciones"; // ← Importamos el nuevo componente
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
         />
       </div>
 
-      <Historia />
+      <Instalaciones />
       <Recursos />
       <Especialidades />
       <Contacto />

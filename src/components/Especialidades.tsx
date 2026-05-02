@@ -1,7 +1,36 @@
+"use client"
+
 import { Baby, Puzzle, BookOpen, Users, Laptop, ArrowRight, Star, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { useRef, useEffect, useState } from "react";
+
+function useInView(threshold = 0.2) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, isInView };
+}
 
 export default function Especialidades() {
+
+  const { ref: headerRef, isInView: headerVisible } = useInView(0.3);
+  const { ref: gridRef, isInView: gridVisible } = useInView(0.1);
+  const { ref: footerRef, isInView: footerVisible } = useInView(0.5);
+
   const niveles = [
     { 
       id: "atencion-temprana", 
@@ -76,8 +105,13 @@ export default function Especialidades() {
       
       <div className="relative max-w-screen-xl mx-auto px-6 lg:px-10 z-10">
         
-        {/* Header mejorado */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16 mb-16 lg:mb-20">
+        {/* Header con animación */}
+        <div 
+          ref={headerRef}
+          className={`flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16 mb-16 lg:mb-20 transition-all duration-1000 ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FFD600]/10 border border-[#FFD600]/20 text-[#FFD600] text-xs font-bold tracking-wider uppercase mb-6">
               <Star className="w-3.5 h-3.5" />
@@ -108,8 +142,13 @@ export default function Especialidades() {
           </div>
         </div>
         
-        {/* GRILLA DE TARJETAS */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        {/* GRILLA DE TARJETAS con animación escalonada */}
+        <div 
+          ref={gridRef}
+          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 transition-all duration-1000 delay-200 ${
+            gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+          }`}
+        >
           {niveles.map((nivel, idx) => {
             const Icon = nivel.icon;
             return (
@@ -160,8 +199,13 @@ export default function Especialidades() {
           })}
         </div>
         
-        {/* Mensaje adicional */}
-        <div className="mt-12 text-center">
+        {/* Footer con animación */}
+        <div 
+          ref={footerRef}
+          className={`mt-12 text-center transition-all duration-800 delay-500 ${
+            footerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <p className="text-gray-500 text-sm font-medium">
             Cada especialidad está diseñada por profesionales expertos en discapacidad visual
           </p>

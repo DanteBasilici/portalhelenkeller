@@ -1,16 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { 
   X, Gamepad2, Play, Circle, Layout, Rocket, Disc, 
   Activity, Grid, Smile, Crosshair, Plane, Hexagon, 
   Car, Shield, Navigation, Zap, Sparkles, ExternalLink, 
   Clock, Wrench, Layers, Map, Eye, Book, FileText,
-  Trophy, Flag, Star // <-- Nuevos íconos agregados
+  Trophy, Flag, Star, Headphones // <-- Agregué Headphones para los audiojuegos
 } from "lucide-react";
 
-// ─── COLECCIÓN DE JUEGOS PARA EL MODAL ───
+function useInView(threshold = 0.2) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, isInView };
+}
+
+// ─── COLECCIÓN DE JUEGOS ARCADE ───
 const arcadeGames =[
   { title: "Bola HK", desc: "Guía a nuestra intrépida bola de metal con lentes a través de desafiantes obstáculos.", link: "https://bolahk.netlify.app", icon: Circle, color: "text-blue-400", bg: "bg-blue-400/10" },
   { title: "Arkanoid", desc: "Destruye los bloques en esta electrizante y moderna versión del clásico retro. ¡No dejes caer la bola!", link: "https://arkanoidhk.netlify.app", icon: Layout, color: "text-red-400", bg: "bg-red-400/10" },
@@ -26,24 +47,44 @@ const arcadeGames =[
   { title: "Defensa Lunar", desc: "Protege tu base espacial de una peligrosa lluvia de meteoritos. ¡Apunta rápido y salva la estación!", link: "https://meteoritohk.netlify.app", icon: Shield, color: "text-amber-500", bg: "bg-amber-500/10" },
   { title: "Misión Apolo", desc: "Demuestra tu precisión como piloto y logra aterrizar el módulo lunar en la plataforma sin que explote.", link: "https://lunarhk.netlify.app", icon: Navigation, color: "text-teal-300", bg: "bg-teal-300/10" },
   { title: "Astro Blaster", desc: "Combate intergaláctico clásico. Elimina escuadrones de naves enemigas en este espectacular arcade de vuelo.", link: "https://astroblasterhk.netlify.app", icon: Zap, color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
-  
-  // <-- Estos son los 3 arreglados con íconos y colores distintos
   { title: "Neon Fútbol", desc: "Deslízate por una vibrante cancha de neón. Demuestra tus reflejos, defiende tu portería y marca el gol de la victoria.", link: "https://futbolhk.netlify.app", icon: Trophy, color: "text-green-300", bg: "bg-green-300/10" },
   { title: "Desert Racing", desc: "Pisa el acelerador a fondo bajo el sol del desierto. Esquiva el tráfico a toda velocidad y demuestra quién es el rey de las dunas.", link: "https://autosdanhk.netlify.app", icon: Flag, color: "text-orange-500", bg: "bg-orange-500/10" },
   { title: "Star Wars", desc: "Toma los controles del legendario Halcón Milenario. Esquiva el fuego enemigo y defiende la galaxia en esta épica batalla espacial.", link: "https://gerradelasgalaxiashk.netlify.app", icon: Star, color: "text-yellow-400", bg: "bg-yellow-400/10" },
 ];
 
+// ─── NUEVA COLECCIÓN DE AUDIOJUEGOS ───
+const audioGames = [
+  { title: "Star Wars", desc: "Pilota tu caza estelar guiándote solo por el sonido. Localiza y destruye las naves del Imperio en la inmensidad del espacio.", link: "https://starwarsaj.netlify.app", icon: Rocket, color: "text-blue-400", bg: "bg-blue-400/10" },
+  { title: "Fuga Policial", desc: "Afina tu oído para esquivar el tráfico a toda velocidad y escapar de las patrullas policiales que te pisan los talones.", link: "https://policiaaj.netlify.app", icon: Car, color: "text-red-500", bg: "bg-red-500/10" },
+  { title: "Sobrevive a Zombies", desc: "El apocalipsis ha llegado. Carga tu escopeta y utiliza tu audición para detectar y eliminar a los zombies que se acercan en la oscuridad.", link: "https://zombiesaj.netlify.app", icon: Activity, color: "text-green-400", bg: "bg-green-400/10" },
+  { title: "Samurai", desc: "Conviértete en un maestro espadachín. Escucha con atención los pasos enemigos y defiéndete de sus ataques sorpresa.", link: "https://samuraiaj.netlify.app", icon: Shield, color: "text-purple-400", bg: "bg-purple-400/10" },
+  { title: "Caza Mosquitos", desc: "Pon a prueba tus reflejos auditivos. Sigue el molesto zumbido en estéreo y da la cachetada maestra en el momento exacto.", link: "https://mosquitosaj.netlify.app", icon: Crosshair, color: "text-yellow-400", bg: "bg-yellow-400/10" },
+];
+
 const apps =[
   { 
     title: "Arcade HK", 
-    desc: "Colección exclusiva de 14 minijuegos retro y modernos diseñados para divertirse y aprender jugando.", 
+    desc: "Colección exclusiva de minijuegos retro y modernos diseñados para divertirse y aprender jugando.", 
     link: "#", 
     tag: "Juegos", 
-    status: "modal", 
+    status: "modal",
+    modalType: "arcade", // <-- Agregado para identificar qué modal abrir
     color: "from-indigo-500 to-purple-600",
     icon: Gamepad2,
     bgGlow: "bg-indigo-500/10",
     borderGlow: "hover:border-indigo-500/30"
+  },
+  { 
+    title: "Audiojuegos", 
+    desc: "Aumenta el volumen y cierra los ojos. Una experiencia inmersiva donde tu audición toma el control absoluto de la acción.", 
+    link: "#", 
+    tag: "Sonoro", 
+    status: "modal", 
+    modalType: "audio", // <-- Abre el modal de audiojuegos
+    color: "from-pink-500 to-rose-500",
+    icon: Headphones,
+    bgGlow: "bg-pink-500/10",
+    borderGlow: "hover:border-pink-500/30"
   },
   { 
     title: "Teclado", 
@@ -111,21 +152,16 @@ const apps =[
     bgGlow: "bg-gray-500/10",
     borderGlow: "hover:border-gray-500/30"
   },
-  { 
-    title: "Nuevas aventuras", 
-    desc: "Estamos preparando más herramientas increíbles.", 
-    link: "#", 
-    tag: "Pronto", 
-    status: "soon", 
-    color: "from-gray-300 to-gray-200",
-    icon: Clock,
-    bgGlow: "bg-gray-400/10",
-    borderGlow: "hover:border-gray-400/30"
-  },
 ];
 
 export default function Recursos() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+ const [modalContent, setModalContent] = useState<string>('arcade');
+  // Guardamos si el modal está abierto o cerrado para la animación
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const { ref: headerRef, isInView: headerVisible } = useInView(0.3);
+  const { ref: gridRef, isInView: gridVisible } = useInView(0.1);
+  const { ref: footerRef, isInView: footerVisible } = useInView(0.5);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -136,6 +172,25 @@ export default function Recursos() {
     return () => { document.body.style.overflow = "auto"; };
   }, [isModalOpen]);
 
+  // Configuramos el contenido según la tarjeta clickeada
+  const currentModalConfig = modalContent === 'audio' ? {
+    title: "Audiojuegos HK",
+    desc: "Ponte los auriculares y selecciona una experiencia",
+    games: audioGames,
+    icon: Headphones,
+    gradient: "from-pink-500 to-rose-600",
+    shadow: "shadow-[0_0_150px_rgba(236,72,153,0.3)]",
+    glow: "bg-pink-600/20"
+  } : {
+    title: "Arcade Helen Keller",
+    desc: "Selecciona un juego para comenzar",
+    games: arcadeGames,
+    icon: Gamepad2,
+    gradient: "from-purple-500 to-indigo-600",
+    shadow: "shadow-[0_0_150px_rgba(139,92,246,0.3)]",
+    glow: "bg-purple-600/20"
+  };
+
   return (
     <>
       <section id="recursos" className="relative py-24 lg:py-32 bg-gray-200 overflow-hidden">
@@ -145,8 +200,13 @@ export default function Recursos() {
         
         <div className="relative px-6 lg:px-10 max-w-7xl mx-auto z-10">
           
-          {/* Header mejorado */}
-          <div className="mb-16 lg:mb-20">
+          {/* Header con animación */}
+          <div 
+            ref={headerRef}
+            className={`mb-16 lg:mb-20 transition-all duration-1000 ${
+              headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#009ADE]/10 border border-[#009ADE]/20 text-[#009ADE] text-xs font-bold tracking-wider uppercase mb-6">
               <Zap className="w-3.5 h-3.5" />
               <span>Laboratorio Digital</span>
@@ -182,29 +242,30 @@ export default function Recursos() {
             </div>
           </div>
 
-          {/* GRID DE TARJETAS */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+          {/* GRID DE TARJETAS con animación */}
+          <div 
+            ref={gridRef}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 transition-all duration-1000 delay-200 ${
+              gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+            }`}
+          >
             {apps.map((app, idx) => {
               const AppIcon = app.icon;
               const isActive = app.status === 'active' || app.status === 'modal';
               const isDev = app.status === 'dev' || app.status === 'soon';
               
-              // Clases comunes para el diseño del contenedor (ahora usado como Link o Button)
               const cardClasses = `group relative w-full text-left bg-white rounded-4xl p-6 sm:p-7 transition-all duration-500 border flex flex-col h-full
                 ${isActive 
                   ? `border-gray-100 hover:border-transparent hover:-translate-y-3 hover:shadow-2xl ${app.borderGlow} cursor-pointer` 
                   : 'border-gray-100 opacity-60 hover:opacity-80 cursor-not-allowed'
                 }`;
 
-              // Contenido interior de la tarjeta (para no repetir código)
               const cardContent = (
                 <>
-                  {/* Glow de fondo en hover */}
                   {isActive && (
                     <div className={`absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 ${app.bgGlow} blur-xl`}></div>
                   )}
                   
-                  {/* Badge de estado */}
                   <div className="flex items-center justify-between mb-5">
                     <span className={`text-[11px] uppercase tracking-wider font-bold px-3 py-1.5 rounded-full border
                       ${isActive 
@@ -223,30 +284,26 @@ export default function Recursos() {
                     )}
                   </div>
                   
-                  {/* Ícono de la app */}
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.color} mb-5 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500 relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <AppIcon className="w-7 h-7 text-white relative z-10" />
                   </div>
                   
-                  {/* Título */}
                   <h3 className={`text-xl font-black mb-2 tracking-tight transition-colors
                     ${isActive ? 'text-[#1a1a1a] group-hover:text-[#009ADE]' : 'text-gray-500'}
                   `}>
                     {app.title}
                   </h3>
                   
-                  {/* Descripción */}
                   <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
                     {app.desc}
                   </p>
                   
-                  {/* CTA Footer (cambiado a divs internamente ya que el contenedor padre ahora hace el clic) */}
                   {app.status === 'modal' ? (
-                    <div className="mt-auto flex items-center justify-between w-full pt-4 border-t border-gray-100 text-sm font-bold text-[#1a1a1a] group-hover:text-indigo-600 transition-colors">
+                    <div className={`mt-auto flex items-center justify-between w-full pt-4 border-t border-gray-100 text-sm font-bold text-[#1a1a1a] transition-colors ${app.modalType === 'audio' ? 'group-hover:text-pink-600' : 'group-hover:text-indigo-600'}`}>
                       <span>Explorar colección</span>
-                      <span className="bg-gray-50 p-2.5 rounded-full group-hover:bg-indigo-100 group-hover:scale-110 transition-all">
-                        <Gamepad2 className="w-4 h-4" />
+                      <span className={`bg-gray-50 p-2.5 rounded-full transition-all group-hover:scale-110 ${app.modalType === 'audio' ? 'group-hover:bg-pink-100' : 'group-hover:bg-indigo-100'}`}>
+                        {app.modalType === 'audio' ? <Headphones className="w-4 h-4" /> : <Gamepad2 className="w-4 h-4" />}
                       </span>
                     </div>
                   ) : app.status === 'active' ? (
@@ -265,10 +322,16 @@ export default function Recursos() {
                 </>
               );
 
-              // Renderizado Condicional del Wrapper
               if (app.status === 'modal') {
                 return (
-                  <button key={idx} onClick={() => setIsModalOpen(true)} className={cardClasses}>
+                  <button 
+                    key={idx} 
+                    onClick={() => {
+                      setModalContent(app.modalType as string);
+                      setIsModalOpen(true);
+                    }} 
+                    className={cardClasses}
+                  >
                     {cardContent}
                   </button>
                 );
@@ -290,8 +353,13 @@ export default function Recursos() {
             })}
           </div>
           
-          {/* Mensaje inferior */}
-          <div className="mt-10 text-center">
+          {/* Footer con animación */}
+          <div 
+            ref={footerRef}
+            className={`mt-10 text-center transition-all duration-800 delay-500 ${
+              footerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             <p className="text-gray-400 text-sm font-medium">
               Todas las aplicaciones están optimizadas para lectores de pantalla y dispositivos adaptados
             </p>
@@ -299,7 +367,7 @@ export default function Recursos() {
         </div>
       </section>
 
-      {/* ─── MODAL 3D ESPECTACULAR (ARCADE) ─── */}
+      {/* ─── MODAL 3D ESPECTACULAR (DINÁMICO) ─── */}
       <div 
         className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 transition-all duration-700 ${isModalOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none delay-300'}`}
       >
@@ -309,22 +377,22 @@ export default function Recursos() {
         ></div>
 
         <div 
-          className="relative w-full max-w-[1400px] max-h-[90vh] flex flex-col bg-[#050505] border border-white/10 rounded-[2rem] sm:rounded-[3rem] shadow-[0_0_150px_rgba(139,92,246,0.3)] overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
+          className={`relative w-full max-w-[1400px] max-h-[90vh] flex flex-col bg-[#050505] border border-white/10 rounded-[2rem] sm:rounded-[3rem] ${currentModalConfig.shadow} overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]`}
           style={{ 
             transform: isModalOpen ? 'perspective(2000px) rotateX(0deg) scale(1) translateY(0)' : 'perspective(2000px) rotateX(40deg) scale(0.8) translateY(100px)',
             opacity: isModalOpen ? 1 : 0
           }}
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-purple-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+          <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] ${currentModalConfig.glow} blur-[120px] rounded-full pointer-events-none`}></div>
 
           <div className="relative shrink-0 flex items-center justify-between p-6 sm:px-10 sm:py-8 border-b border-white/10">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg">
-                <Gamepad2 className="w-6 h-6 text-white" />
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${currentModalConfig.gradient} flex items-center justify-center shadow-lg`}>
+                <currentModalConfig.icon className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Arcade Helen Keller</h2>
-                <p className="text-sm sm:text-base text-gray-400 font-medium">Selecciona un juego para comenzar</p>
+                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">{currentModalConfig.title}</h2>
+                <p className="text-sm sm:text-base text-gray-400 font-medium">{currentModalConfig.desc}</p>
               </div>
             </div>
             <button 
@@ -338,7 +406,7 @@ export default function Recursos() {
           <div className="relative overflow-y-auto p-6 sm:p-10 custom-scrollbar">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
               
-              {arcadeGames.map((game, index) => {
+              {currentModalConfig.games.map((game, index) => {
                 const Icon = game.icon;
                 return (
                   <a 
@@ -372,6 +440,7 @@ export default function Recursos() {
           </div>
         </div>
       </div>
+      
 
       <style>{`
         .custom-scrollbar::-webkit-scrollbar { width: 8px; }

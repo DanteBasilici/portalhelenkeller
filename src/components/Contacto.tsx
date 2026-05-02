@@ -1,15 +1,48 @@
+"use client";
+
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Navigation, Heart, ExternalLink } from "lucide-react";
 
+function useInView(threshold = 0.2) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, isInView };
+}
 
 export default function Contacto() {
+  const { ref: contactRef, isInView: contactVisible } = useInView(0.1);
+  const { ref: mapRef, isInView: mapVisible } = useInView(0.2);
+  const { ref: footerRef, isInView: footerVisible } = useInView(0.1);
+
   return (
     <section id="contacto" className="bg-gray-50 relative pt-32">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10 mb-20 relative z-10">
         <div className="bg-white rounded-[3rem] shadow-2xl p-6 lg:p-12 border border-gray-100">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             
-            <div className="flex flex-col justify-center py-6">
+            {/* Columna de contacto con animación */}
+            <div 
+              ref={contactRef}
+              className={`flex flex-col justify-center py-6 transition-all duration-1000 ${
+                contactVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+              }`}
+            >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-[#E32726] text-[12px] font-black tracking-[0.2em] uppercase mb-6 w-max">
                 <Navigation className="w-4 h-4" />
                 <span>Contacto</span>
@@ -21,6 +54,7 @@ export default function Contacto() {
               </h3>
               
               <div className="space-y-8">
+                {/* Teléfono */}
                 <div className="flex items-center gap-6 group cursor-pointer">
                   <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#009ADE] group-hover:border-[#009ADE] transition-all duration-300">
                     <Phone className="w-6 h-6 text-gray-600 group-hover:text-white transition-colors" />
@@ -31,6 +65,7 @@ export default function Contacto() {
                   </div>
                 </div>
                 
+                {/* Email */}
                 <div className="flex items-center gap-6 group cursor-pointer">
                   <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#009ADE] group-hover:border-[#009ADE] transition-all duration-300">
                     <Mail className="w-6 h-6 text-gray-600 group-hover:text-white transition-colors" />
@@ -41,6 +76,7 @@ export default function Contacto() {
                   </div>
                 </div>
 
+                {/* Instagram */}
                 <div className="flex items-center gap-6 group cursor-pointer">
                   <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-gradient-to-tr group-hover:from-yellow-400 group-hover:via-pink-500 group-hover:to-purple-600 group-hover:border-transparent transition-all duration-300">
                     <svg 
@@ -68,6 +104,7 @@ export default function Contacto() {
                   </div>
                 </div>
 
+                {/* Ubicación */}
                 <div className="flex items-center gap-6 group">
                   <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0">
                     <MapPin className="w-6 h-6 text-gray-600" />
@@ -80,7 +117,13 @@ export default function Contacto() {
               </div>
             </div>
 
-            <div className="relative h-[400px] lg:h-auto min-h-[500px] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] border-4 border-white bg-gray-100">
+            {/* Mapa con animación */}
+            <div 
+              ref={mapRef}
+              className={`relative h-[400px] lg:h-auto min-h-[500px] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] border-4 border-white bg-gray-100 transition-all duration-1000 delay-200 ${
+                mapVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+              }`}
+            >
               <iframe 
                 src="https://maps.google.com/maps?q=Escuela%20Helen%20Keller%20Mendoza&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                 width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
@@ -101,8 +144,13 @@ export default function Contacto() {
         </div>
       </div>
 
-      {/* FOOTER MEJORADO */}
-      <footer className="relative bg-[#050505] text-white pt-24 pb-0 px-6 overflow-hidden">
+      {/* FOOTER con animación */}
+      <footer 
+        ref={footerRef}
+        className={`relative bg-[#050505] text-white pt-24 pb-8 px-6 overflow-hidden transition-all duration-1000 ${
+          footerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        }`}
+      >
         {/* Efectos de luz */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#009ADE] opacity-[0.08] blur-[150px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#E32726] opacity-[0.04] blur-[130px] rounded-full translate-y-1/3 translate-x-1/3 pointer-events-none"></div>
@@ -187,7 +235,7 @@ export default function Contacto() {
                         Diseño y Código por
                       </p>
                       <p className="text-lg font-black bg-linear-to-r from-[#009ADE] to-cyan-300 bg-clip-text text-transparent">
-                        Dante Basilici
+                        Dante Basilici Zalazar
                       </p>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#009ADE]/20 transition-all group-hover:scale-110">
@@ -203,7 +251,7 @@ export default function Contacto() {
           <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-gray-500 text-sm font-medium">
               <span>© {new Date().getFullYear()} Todos los derechos reservados.</span>
-              <Heart className="w-3.5 h-3.5 text-[#E32726] fill-[#E32726]" />
+              <Heart className="w-3.5 h-3.5 text-red fill-red" />
             </div>
             
             <p className="text-gray-600 text-xs font-medium">

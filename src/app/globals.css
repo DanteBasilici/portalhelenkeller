@@ -1,6 +1,158 @@
 @import "tailwindcss";
 
-/* Aquí puedes agregar variables personalizadas después si lo necesitas */
+/* Variables personalizadas */
 @theme {
   --color-primary: #1C69D4;
+  --color-red: #E32726;
+  --color-yellow: #FFD700;
+  --color-celeste: #87CEEB;
 }
+
+/* Estilos base para scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================
+   SCROLLBAR PERSONALIZADO WebKit (Chrome, Safari, Edge)
+   ========================================== */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C69D4;
+  border-radius: 10px;
+  margin: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFD700; /* Amarillo sólido */
+  border-radius: 10px;
+  border: 3px solid #1C69D4;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #eecb05; /* Amarillo más oscuro al pasar el mouse */
+  cursor: pointer;
+}
+
+/* Colores dinámicos por página */
+.scroll-home ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-celeste) 0%,
+    var(--color-yellow) 50%,
+    var(--color-red) 100%
+  );
+  border-color: #f1f5f9;
+}
+
+.scroll-historia ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c41f1e, var(--color-red));
+  border-color: #f1f5f9;
+}
+
+.scroll-especialidades ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5bb8e0, var(--color-celeste));
+  border-color: #f1f5f9;
+}
+
+.scroll-recursos ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e6c200, var(--color-yellow));
+  border-color: #f1f5f9;
+}
+
+.scroll-contacto ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-celeste) 0%, var(--color-red) 100%);
+  border-color: #f1f5f9;
+}
+
+/* Hover effects */
+.scroll-home ::-webkit-scrollbar-thumb:hover,
+.scroll-historia ::-webkit-scrollbar-thumb:hover,
+.scroll-especialidades ::-webkit-scrollbar-thumb:hover,
+.scroll-recursos ::-webkit-scrollbar-thumb:hover,
+.scroll-contacto ::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+/* ==========================================
+   SCROLLBAR PARA FIREFOX
+   ========================================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #FFD700 #1C69D4; /* thumb: amarillo, track: azul */
+}
+
+/* Firefox no soporta colores dinámicos por clase, 
+   dejamos un color base agradable */
+.scroll-home,
+.scroll-recursos {
+  scrollbar-color: var(--color-yellow) #f1f5f9;
+}
+
+.scroll-historia,
+.scroll-contacto {
+  scrollbar-color: var(--color-red) #f1f5f9;
+}
+
+.scroll-especialidades {
+  scrollbar-color: var(--color-celeste) #f1f5f9;
+}
+
+/* Reemplaza la parte de animaciones en globals.css */
+
+/* ==========================================
+   ANIMACIONES GLOBALES
+   ========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Estas clases solo se aplican en el cliente */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.5s ease-out forwards;
+  }
+}
+
+/* Respetar preferencias de reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in-scale {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
