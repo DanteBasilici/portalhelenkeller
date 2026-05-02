@@ -58,11 +58,9 @@ const datosEspecialidades: Record<string, EspecialidadData> = {
   "nivel-primario": {
     titulo: "Nivel Primario (Sede)",
     subtitulo: "Educación integral, innovación y desarrollo de autonomía.",
-    descripcion: `En el Nivel Primario en sede transitan su escolaridad, estudiantes con discapacidad visual y multidiscapacidad. La propuesta educativa acompaña sus trayectorias, respetando sus ritmos, estilos de aprendizaje, y formas de comunicación.
-                  Se trabaja desde una planificación centrada en la persona, donde cada estudiante es protagonista de su proceso, considerando sus intereses, necesidades y potencialidades.
-                  El abordaje pedagógico incluye el uso de sistemas y recursos específicos como Braille, macrotipo, comunicación aumentativa y alternativa, materiales táctiles y tecnologías de apoyo, en función de cada perfil.
-                  Asimismo, se prioriza el desarrollo de habilidades funcionales, sociales y comunicativas, promoviendo la mayor autonomía posible y la participación en la vida cotidiana.
-                  El trabajo se realiza de manera interdisciplinaria, en articulación con las familias y otros profesionales, generando un entorno estimulante, estructurado, accesible y acorde a las características de los estudiantes.
+    descripcion: `En el Nivel Primario en sede transitan su escolaridad estudiantes con discapacidad visual y multidiscapacidad. La propuesta educativa acompaña sus trayectorias respetando sus ritmos, estilos de aprendizaje y formas de comunicación. A través de áreas como alfabetización, matemática, ciencias, braille y macrotipo, tiflotecnología, orientación y movilidad, actividades de la vida diaria, música, educación física y educación artística, se promueve el acceso al conocimiento y el desarrollo integral de cada estudiante.
+                  El abordaje pedagógico se organiza desde una planificación centrada en la persona, donde cada estudiante es protagonista de su proceso, considerando sus intereses, necesidades y potencialidades. Se implementan sistemas y recursos específicos como comunicación aumentativa y alternativa, materiales táctiles y tecnologías de apoyo, priorizando el desarrollo de habilidades funcionales, sociales y comunicativas, especialmente en aquellos estudiantes con desafíos cognitivos y/o motores.
+                  El trabajo se realiza de manera interdisciplinaria, en articulación con las familias y otras instituciones, generando un entorno accesible, estructurado y estimulante. De este modo, se favorece la autonomía, la participación en la vida cotidiana y la construcción de trayectorias educativas significativas.
 `,
     color: "from-[#FFD600] to-yellow-500",
     imagen: "/sede.jpg",
