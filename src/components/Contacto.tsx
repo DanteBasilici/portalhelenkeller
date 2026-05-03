@@ -147,7 +147,7 @@ export default function Contacto() {
       {/* FOOTER con animación */}
       <footer 
         ref={footerRef}
-        className={`relative bg-[#050505] text-white pt-24 pb-8 px-6 overflow-hidden transition-all duration-1000 ${
+        className={`relative bg-[#050505] text-white pt-24 pb-11 px-6 overflow-hidden transition-all duration-1000 ${
           footerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         }`}
       >
