@@ -144,6 +144,17 @@ const apps =[
   { 
     title: "Procesador de Textos", 
     desc: "Herramienta de escritura simplificada pensada para niños.", 
+    link: "https://procesadortexto.vercel.app/", 
+    tag: "Herramienta", 
+    status: "active", 
+    color: "from-[#E32726] to-red-500",
+    icon: FileText,
+    bgGlow: "bg-red-700/10",
+    borderGlow: "hover:border-red-700/30"
+  },
+    { 
+    title: "En desarrollo", 
+    desc: "Nuevas apps proximamente.", 
     link: "#", 
     tag: "Herramienta", 
     status: "dev", 
