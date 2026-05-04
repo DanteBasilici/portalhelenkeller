@@ -131,15 +131,15 @@ const apps =[
     borderGlow: "hover:border-blue-500/30"
   }, 
   { 
-    title: "Mapa Interactivo", 
-    desc: "Mapa de Argentina con feedback auditivo y visual para aprender geografía.", 
-    link: "#", 
-    tag: "Geografía", 
-    status: "dev", 
-    color: "from-gray-400 to-gray-500",
-    icon: Map,
-    bgGlow: "bg-gray-500/10",
-    borderGlow: "hover:border-gray-500/30"
+    title: "Tabla Periódica", 
+    desc: "Tabla periodica compatible con lectores de pantalla.", 
+    link: "https://tablaperiodicahk.vercel.app/", 
+    tag: "Química", 
+    status: "active", 
+    color: "from-[#9FAC75] to-violet-400",
+    icon: Layout,
+    bgGlow: "bg-violet-500/10",
+    borderGlow: "hover:border-violet-700/30"
   },
   { 
     title: "Procesador de Textos", 
