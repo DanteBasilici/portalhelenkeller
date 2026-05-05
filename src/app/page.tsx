@@ -19,8 +19,8 @@ export default function HomePage() {
         />
       </div>
 
-      <Instalaciones />
       <Recursos />
+      <Instalaciones />
       <Especialidades />
       <Contacto />
       

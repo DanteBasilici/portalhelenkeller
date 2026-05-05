@@ -96,7 +96,18 @@ const apps =[
     icon: Layers,
     bgGlow: "bg-red-500/10",
     borderGlow: "hover:border-red-500/30"
-  }, 
+  },
+    { 
+    title: "Teclado con Lector de Pantalla", 
+    desc: "Esta aplicación está adaptada para usarse con lector de pantalla, últil para ceguera o baja visión.", 
+    link: "https://tecladonvda.vercel.app/", 
+    tag: "Educativo", 
+    status: "active", 
+    color: "from-[#E32726] to-red-400",
+    icon: Layers,
+    bgGlow: "bg-red-500/10",
+    borderGlow: "hover:border-red-500/30"
+  },  
   { 
     title: "Tienda Online", 
     desc: "Simulador estilo Mercado Libre y PedidosYa para practicar compras.", 
